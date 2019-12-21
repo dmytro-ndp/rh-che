@@ -41,16 +41,16 @@ nmcli > nmclioutput
 cat nmclioutput
 
 
-firewall-cmd --permanent --new-zone dockerc
-firewall-cmd --permanent --zone dockerc --add-source 172.17.0.0/16
-firewall-cmd --permanent --zone dockerc --add-port 8443/tcp
-firewall-cmd --permanent --zone dockerc --add-port 53/udp
-firewall-cmd --permanent --zone dockerc --add-port 8053/udp
-firewall-cmd --reload
+#firewall-cmd --permanent --new-zone dockerc
+#firewall-cmd --permanent --zone dockerc --add-source 172.17.0.0/16
+#firewall-cmd --permanent --zone dockerc --add-port 8443/tcp
+#firewall-cmd --permanent --zone dockerc --add-port 53/udp
+#firewall-cmd --permanent --zone dockerc --add-port 8053/udp
+#firewall-cmd --reload
 
 
-# systemctl stop firewalld
-setenforce 0
+systemctl stop firewalld
+#setenforce 0
 
 
 LOCAL_IP_ADDRESS=$(ip a show | grep -e "scope.*eth0" | grep -v ':' | cut -d/ -f1 | awk 'NR==1{print $2}')
